@@ -15,6 +15,8 @@
 		7C8843FC27F71E53007DDF8E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C8843FB27F71E53007DDF8E /* LoginViewController.swift */; };
 		7C8843FE27F71E63007DDF8E /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C8843FD27F71E63007DDF8E /* RegisterViewController.swift */; };
 		7C88440027F72F8F007DDF8E /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C8843FF27F72F8F007DDF8E /* ColorExtension.swift */; };
+		7C88440227F762C8007DDF8E /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C88440127F762C8007DDF8E /* UIViewController+Extension.swift */; };
+		7C88440427F7633B007DDF8E /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C88440327F7633B007DDF8E /* UserInfo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		7C8843FB27F71E53007DDF8E /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		7C8843FD27F71E63007DDF8E /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		7C8843FF27F72F8F007DDF8E /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
+		7C88440127F762C8007DDF8E /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		7C88440327F7633B007DDF8E /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +69,8 @@
 				7C8843FF27F72F8F007DDF8E /* ColorExtension.swift */,
 				7C8843FB27F71E53007DDF8E /* LoginViewController.swift */,
 				7C8843FD27F71E63007DDF8E /* RegisterViewController.swift */,
+				7C88440127F762C8007DDF8E /* UIViewController+Extension.swift */,
+				7C88440327F7633B007DDF8E /* UserInfo.swift */,
 				7C8843ED27F71DF6007DDF8E /* Main.storyboard */,
 				7C8843F027F71DF8007DDF8E /* Assets.xcassets */,
 				7C8843F227F71DF8007DDF8E /* LaunchScreen.storyboard */,
@@ -144,10 +150,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C88440227F762C8007DDF8E /* UIViewController+Extension.swift in Sources */,
 				7C8843FC27F71E53007DDF8E /* LoginViewController.swift in Sources */,
 				7C8843E827F71DF6007DDF8E /* AppDelegate.swift in Sources */,
 				7C8843EA27F71DF6007DDF8E /* SceneDelegate.swift in Sources */,
 				7C8843FE27F71E63007DDF8E /* RegisterViewController.swift in Sources */,
+				7C88440427F7633B007DDF8E /* UserInfo.swift in Sources */,
 				7C88440027F72F8F007DDF8E /* ColorExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

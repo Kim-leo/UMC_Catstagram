@@ -8,6 +8,10 @@
 import UIKit
 
 class LoginViewController: UIViewController {
+    var email = String()
+    var password = String()
+    var userInfo: UserInfo?
+    
     // MARK: - UIComponent
     let catstagramImage: UIImageView = {
         let catstagramLogo = UIImage(named: "ic_catstagram_logo")
@@ -22,6 +26,7 @@ class LoginViewController: UIViewController {
         emailTF.placeholder = "이메일"
         emailTF.font = UIFont(name: "System", size: 14)
         emailTF.borderStyle = .roundedRect
+        emailTF.addTarget(self, action: #selector(emailTextFieldEditingChanged(_:)), for: .editingChanged)
         return emailTF
     }()
     
@@ -30,6 +35,7 @@ class LoginViewController: UIViewController {
         passwordTF.placeholder = "비밀번호"
         passwordTF.font = UIFont(name: "System", size: 14)
         passwordTF.borderStyle = .roundedRect
+        passwordTF.addTarget(self, action: #selector(passwordTextFieldEditingChanged(_:)), for: .editingChanged)
         return passwordTF
     }()
     
@@ -49,6 +55,7 @@ class LoginViewController: UIViewController {
         btn.clipsToBounds = true
         btn.layer.cornerRadius = 5
         btn.backgroundColor = .disabledButtonColor
+        btn.addTarget(self, action: #selector(loginButtonDidTap(_:)), for: .touchUpInside)
         return btn
     }()
     
@@ -91,7 +98,7 @@ class LoginViewController: UIViewController {
     
     let registerButton: UIButton = {
         let btn = UIButton()
-        btn.setTitle("계정이 없으신가요? 가입하기", for: .normal)
+        btn.setTitle("계정이 없으신가요?  가입하기", for: .normal)
         btn.setTitleColor(.darkGray, for: .normal)
         btn.titleLabel?.font = UIFont(name: "GillSans-Italic", size: 12)
         btn.addTarget(self, action: #selector(registerButtonDidTap(_:)), for: .touchUpInside)
@@ -102,6 +109,8 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupAttribute()
+     
         view.addSubview(catstagramImage)
         catstagramImageAutoLayout()
         view.addSubview(passwordTextField)
@@ -127,12 +136,60 @@ class LoginViewController: UIViewController {
         
         
     }
+    // MARK: - Actions
+    
+    @objc func emailTextFieldEditingChanged(_ sender: UITextField) {
+        let text = sender.text ?? ""
+        self.loginButton.backgroundColor = text.isValidEmail() ? .facebookColor : .disabledButtonColor
+        self.email = text
+    }
+    
+    @objc func passwordTextFieldEditingChanged(_ sender: UITextField) {
+        let text = sender.text ?? ""
+        self.loginButton.backgroundColor = text.count > 2 ? .facebookColor : .disabledButtonColor
+        self.password = text
+    }
+    
+    @objc func loginButtonDidTap(_ sender: UIButton) {
+        // 회원가입 정보 전달받아서, 그것과 textField 데이터가 일치하면 로그인하기
+        guard let userInfo = userInfo else { return }
+        
+        if userInfo.email == self.email && userInfo.password == self.password {
+            
+            let vc = storyboard?.instantiateViewController(withIdentifier: "TabBarVC") as! UITabBarController
+            vc.modalPresentationStyle = .fullScreen
+            self.present(vc, animated: true, completion: nil)
+        } else {
+            
+        }
+    }
     
     @objc func registerButtonDidTap(_ sender: UIButton) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let registerViewController = storyboard.instantiateViewController(withIdentifier: "RegisterVC") as! RegisterViewController
         self.navigationController?.pushViewController(registerViewController, animated: true)
         
+        // ARC -> 강한참조, weak self -> ARC 낮춰줌
+        registerViewController.userInfo = { [weak self] (userInfo) in
+            self?.userInfo = userInfo
+        }
+    }
+    
+    private func setupAttribute() {
+        // registerButton
+        
+        let text1 = "계정이 없으신가요?"
+        let text2 = "가입하기"
+        
+        let font1 = UIFont.systemFont(ofSize: 13)
+        let font2 = UIFont.boldSystemFont(ofSize: 13)
+        
+        let color1 = UIColor.darkGray
+        let color2 = UIColor.facebookColor
+        
+        let attributes = generateButtonAttribute(self.registerButton, texts: text1, text2, fonts: font1, font2, colors: color1, color2)
+        
+        self.registerButton.setAttributedTitle(attributes, for: .normal)
     }
     
     // MARK: - UIComponents AutoLayout()
