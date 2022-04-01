@@ -127,7 +127,10 @@ class LoginViewController: UIViewController {
     }
     
     @objc func registerButtonDidTap(_ sender: UIButton) {
-        print("hello")
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let registerViewController = storyboard.instantiateViewController(withIdentifier: "RegisterVC") as! RegisterViewController
+        self.navigationController?.pushViewController(registerViewController, animated: true)
+        
     }
     
     // MARK: - UIComponents AutoLayout()
