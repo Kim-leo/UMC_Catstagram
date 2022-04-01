@@ -77,6 +77,8 @@ class LoginViewController: UIViewController {
         let btn = UIButton()
         btn.setTitle("페이스북으로 로그인", for: .normal)
         btn.setTitleColor(.facebookColor, for: .normal)
+        btn.layer.masksToBounds = true
+        btn.layer.cornerRadius = 5
         btn.setImage(UIImage(systemName: "f.square.fill"), for: .normal)
         return btn
     }()
