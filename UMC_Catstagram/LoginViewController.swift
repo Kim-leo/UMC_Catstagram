@@ -92,9 +92,9 @@ class LoginViewController: UIViewController {
         btn.setTitle("계정이 없으신가요? 가입하기", for: .normal)
         btn.setTitleColor(.darkGray, for: .normal)
         btn.titleLabel?.font = UIFont(name: "GillSans-Italic", size: 12)
+        btn.addTarget(self, action: #selector(registerButtonDidTap(_:)), for: .touchUpInside)
         return btn
     }()
-    
     
     // MARK: - viewDidLoad
     override func viewDidLoad() {
@@ -124,6 +124,10 @@ class LoginViewController: UIViewController {
         bottomUIViewAutoLayout()
         
         
+    }
+    
+    @objc func registerButtonDidTap(_ sender: UIButton) {
+        print("hello")
     }
     
     // MARK: - UIComponents AutoLayout()
