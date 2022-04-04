@@ -110,30 +110,7 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         
         setupAttribute()
-     
-        view.addSubview(catstagramImage)
-        catstagramImageAutoLayout()
-        view.addSubview(passwordTextField)
-        passwordTextFieldAutoLayout()
-        view.addSubview(emailTextField)
-        emailTextFieldAutoLayout()
-        view.addSubview(forgetPasswordButton)
-        forgetPasswordButtonAutoLayout()
-        view.addSubview(loginButton)
-        loginButtonAutoLayout()
-        view.addSubview(orLabel)
-        orLabelAutoLayout()
-        view.addSubview(leftUIView)
-        leftUIViewAutoLayout()
-        view.addSubview(rightUIView)
-        rightUIViewAutoLayout()
-        view.addSubview(facebookLoginButton)
-        facebookLoginButtonAutoLayout()
-        view.addSubview(registerButton)
-        registerButtonAutoLayout()
-        view.addSubview(bottomUIView)
-        bottomUIViewAutoLayout()
-        
+        addComponentsToScreen()
         
     }
     // MARK: - Actions
@@ -159,6 +136,7 @@ class LoginViewController: UIViewController {
             let vc = storyboard?.instantiateViewController(withIdentifier: "TabBarVC") as! UITabBarController
             vc.modalPresentationStyle = .fullScreen
             self.present(vc, animated: true, completion: nil)
+            
         } else {
             
         }
@@ -193,6 +171,32 @@ class LoginViewController: UIViewController {
     }
     
     // MARK: - UIComponents AutoLayout()
+    
+    func addComponentsToScreen() {
+        view.addSubview(catstagramImage)
+        catstagramImageAutoLayout()
+        view.addSubview(passwordTextField)
+        passwordTextFieldAutoLayout()
+        view.addSubview(emailTextField)
+        emailTextFieldAutoLayout()
+        view.addSubview(forgetPasswordButton)
+        forgetPasswordButtonAutoLayout()
+        view.addSubview(loginButton)
+        loginButtonAutoLayout()
+        view.addSubview(orLabel)
+        orLabelAutoLayout()
+        view.addSubview(leftUIView)
+        leftUIViewAutoLayout()
+        view.addSubview(rightUIView)
+        rightUIViewAutoLayout()
+        view.addSubview(facebookLoginButton)
+        facebookLoginButtonAutoLayout()
+        view.addSubview(registerButton)
+        registerButtonAutoLayout()
+        view.addSubview(bottomUIView)
+        bottomUIViewAutoLayout()
+    }
+    
     func catstagramImageAutoLayout() {
         catstagramImage.translatesAutoresizingMaskIntoConstraints = false
         catstagramImage.widthAnchor.constraint(equalToConstant: 250).isActive = true

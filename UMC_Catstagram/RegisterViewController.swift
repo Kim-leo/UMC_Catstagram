@@ -176,31 +176,7 @@ class RegisterViewController: UIViewController {
         setupTextField()
         labelSetupAttribute()
         setupAttribute()
-        
-        view.addSubview(catstagramImage)
-        catstagramImageAutoLayout()
-        view.addSubview(joinLabel)
-        joinLabelAutoLayout()
-        view.addSubview(facebookLoginButton)
-        facebookLoginButtonAutoLayout()
-        view.addSubview(orLabel)
-        orLabelAutoLayout()
-        view.addSubview(leftUIView)
-        leftUIViewAutoLayout()
-        view.addSubview(rightUIView)
-        rightUIViewAutoLayout()
-        view.addSubview(textFieldStackView)
-        textFieldStackViewAutoLayout()
-        textFieldStackView.addArrangedSubview(emailTextField)
-        textFieldStackView.addArrangedSubview(nameTextField)
-        textFieldStackView.addArrangedSubview(nicknameTextField)
-        textFieldStackView.addArrangedSubview(passwordTextField)
-        view.addSubview(registerButton)
-        registerButtonAutoLayout()
-        view.addSubview(popToLoginButton)
-        popToLoginButtonAutoLayout()
-        view.addSubview(bottomUIView)
-        bottomUIViewAutoLayout()
+        addComponentsToScreen()
         
         self.navigationController?.interactivePopGestureRecognizer?.delegate = nil
         
@@ -312,6 +288,33 @@ class RegisterViewController: UIViewController {
     }
     
     // MARK: - AutoLayout()
+    
+    func addComponentsToScreen() {
+        view.addSubview(catstagramImage)
+        catstagramImageAutoLayout()
+        view.addSubview(joinLabel)
+        joinLabelAutoLayout()
+        view.addSubview(facebookLoginButton)
+        facebookLoginButtonAutoLayout()
+        view.addSubview(orLabel)
+        orLabelAutoLayout()
+        view.addSubview(leftUIView)
+        leftUIViewAutoLayout()
+        view.addSubview(rightUIView)
+        rightUIViewAutoLayout()
+        view.addSubview(textFieldStackView)
+        textFieldStackViewAutoLayout()
+        textFieldStackView.addArrangedSubview(emailTextField)
+        textFieldStackView.addArrangedSubview(nameTextField)
+        textFieldStackView.addArrangedSubview(nicknameTextField)
+        textFieldStackView.addArrangedSubview(passwordTextField)
+        view.addSubview(registerButton)
+        registerButtonAutoLayout()
+        view.addSubview(popToLoginButton)
+        popToLoginButtonAutoLayout()
+        view.addSubview(bottomUIView)
+        bottomUIViewAutoLayout()
+    }
     func catstagramImageAutoLayout() {
         catstagramImage.translatesAutoresizingMaskIntoConstraints = false
         catstagramImage.widthAnchor.constraint(equalToConstant: 250).isActive = true
