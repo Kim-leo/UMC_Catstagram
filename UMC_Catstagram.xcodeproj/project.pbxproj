@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7C03183427FED81C0056598A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C03183327FED81C0056598A /* HomeViewController.swift */; };
 		7C8843E827F71DF6007DDF8E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C8843E727F71DF6007DDF8E /* AppDelegate.swift */; };
 		7C8843EA27F71DF6007DDF8E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C8843E927F71DF6007DDF8E /* SceneDelegate.swift */; };
 		7C8843EF27F71DF6007DDF8E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C8843ED27F71DF6007DDF8E /* Main.storyboard */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7C03183327FED81C0056598A /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		7C8843E427F71DF6007DDF8E /* UMC_Catstagram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UMC_Catstagram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C8843E727F71DF6007DDF8E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7C8843E927F71DF6007DDF8E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -45,6 +47,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7C03183227FED80E0056598A /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				7C03183327FED81C0056598A /* HomeViewController.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
 		7C8843DB27F71DF6007DDF8E = {
 			isa = PBXGroup;
 			children = (
@@ -64,6 +74,7 @@
 		7C8843E627F71DF6007DDF8E /* UMC_Catstagram */ = {
 			isa = PBXGroup;
 			children = (
+				7C03183227FED80E0056598A /* Home */,
 				7C8843E727F71DF6007DDF8E /* AppDelegate.swift */,
 				7C8843E927F71DF6007DDF8E /* SceneDelegate.swift */,
 				7C8843FF27F72F8F007DDF8E /* ColorExtension.swift */,
@@ -153,6 +164,7 @@
 				7C88440227F762C8007DDF8E /* UIViewController+Extension.swift in Sources */,
 				7C8843FC27F71E53007DDF8E /* LoginViewController.swift in Sources */,
 				7C8843E827F71DF6007DDF8E /* AppDelegate.swift in Sources */,
+				7C03183427FED81C0056598A /* HomeViewController.swift in Sources */,
 				7C8843EA27F71DF6007DDF8E /* SceneDelegate.swift in Sources */,
 				7C8843FE27F71E63007DDF8E /* RegisterViewController.swift in Sources */,
 				7C88440427F7633B007DDF8E /* UserInfo.swift in Sources */,

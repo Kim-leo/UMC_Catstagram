@@ -397,7 +397,7 @@ class RegisterViewController: UIViewController {
     
 }
 
-// 유효성 검사 로직
+// MARK: - 유효성 검사 로직
 // 정규표현식
 extension String {
     
