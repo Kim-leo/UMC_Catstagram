@@ -42,57 +42,61 @@ class HomeViewController: UIViewController {
         return btn
     }()
     
+    let tableView: UITableView = {
+        let tbview = UITableView()
+        return tbview
+    }()
     
     //MARK: - viewDidLoad()
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.separatorStyle = .none
+        
+        tableView.register(FeedTableViewCell.self, forCellReuseIdentifier: FeedTableViewCell.cellIdentifier)
+        
         addComponentsToScreen()
         
+        
     }
-    
+
     // MARK: - AutoLayout()
     func addComponentsToScreen() {
-        view.addSubview(navigationUIView)
-        navigationUIViewAutoLayout()
-        navigationUIView.addSubview(catstagramImage)
+        view.addSubview(catstagramImage)
         catstagramImageAutoLayout()
-        navigationUIView.addSubview(sendButton)
+        view.addSubview(sendButton)
         sendButtonAutoLayout()
-        navigationUIView.addSubview(heartButton)
+        view.addSubview(heartButton)
         heartButtonAutoLayout()
-        navigationUIView.addSubview(uploadButton)
+        view.addSubview(uploadButton)
         uploadButtonAutoLayout()
-    }
-    
-    func navigationUIViewAutoLayout() {
-        navigationUIView.translatesAutoresizingMaskIntoConstraints = false
-        navigationUIView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
-        navigationUIView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        navigationUIView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        navigationUIView.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        view.addSubview(tableView)
+        tableViewAutoLayout()
     }
     
     func catstagramImageAutoLayout() {
         catstagramImage.translatesAutoresizingMaskIntoConstraints = false
-        catstagramImage.leadingAnchor.constraint(equalTo: navigationUIView.leadingAnchor, constant: 15).isActive = true
+        catstagramImage.topAnchor.constraint(equalTo: view.topAnchor, constant: 50).isActive = true
+        catstagramImage.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
+        catstagramImage.heightAnchor.constraint(equalToConstant: 50).isActive = true
         catstagramImage.widthAnchor.constraint(equalToConstant: 140).isActive = true
-        catstagramImage.topAnchor.constraint(equalTo: navigationUIView.topAnchor, constant: 5).isActive = true
-        catstagramImage.bottomAnchor.constraint(equalTo: navigationUIView.bottomAnchor, constant: 5).isActive = true
     }
     
     func sendButtonAutoLayout() {
         sendButton.translatesAutoresizingMaskIntoConstraints = false
-        sendButton.centerYAnchor.constraint(equalTo: navigationUIView.centerYAnchor).isActive = true
+        sendButton.centerYAnchor.constraint(equalTo: catstagramImage.centerYAnchor).isActive = true
         sendButton.widthAnchor.constraint(equalToConstant: 25).isActive = true
         sendButton.heightAnchor.constraint(equalToConstant: 25).isActive = true
-        sendButton.trailingAnchor.constraint(equalTo: navigationUIView.trailingAnchor, constant: -15).isActive = true
+        sendButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15).isActive = true
     }
     
     func heartButtonAutoLayout() {
         heartButton.translatesAutoresizingMaskIntoConstraints = false
         heartButton.widthAnchor.constraint(equalToConstant: 25).isActive = true
         heartButton.heightAnchor.constraint(equalToConstant: 25).isActive = true
-        heartButton.centerYAnchor.constraint(equalTo: navigationUIView.centerYAnchor).isActive = true
+        heartButton.centerYAnchor.constraint(equalTo: catstagramImage.centerYAnchor).isActive = true
         heartButton.trailingAnchor.constraint(equalTo: sendButton.leadingAnchor, constant: -15).isActive = true
     }
     
@@ -100,8 +104,54 @@ class HomeViewController: UIViewController {
         uploadButton.translatesAutoresizingMaskIntoConstraints = false
         uploadButton.widthAnchor.constraint(equalToConstant: 25).isActive = true
         uploadButton.heightAnchor.constraint(equalToConstant: 25).isActive = true
-        uploadButton.centerYAnchor.constraint(equalTo: navigationUIView.centerYAnchor).isActive = true
+        uploadButton.centerYAnchor.constraint(equalTo: catstagramImage.centerYAnchor).isActive = true
         uploadButton.trailingAnchor.constraint(equalTo: heartButton.leadingAnchor, constant: -15).isActive = true
+    }
+    
+    func tableViewAutoLayout() {
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.topAnchor.constraint(equalTo: catstagramImage.bottomAnchor).isActive = true
+        tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
     }
 
 }
+
+//MARK: - TableView
+extension HomeViewController : UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 10
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.row == 0 {
+            let cell = UITableViewCell()
+            cell.backgroundColor = .blue
+            cell.selectionStyle = .none
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: FeedTableViewCell.cellIdentifier, for: indexPath) as! FeedTableViewCell
+            cell.selectionStyle = .none
+            return cell
+        }
+
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.row == 0 {
+            return 80
+        } else {
+            return 600
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        //guard let tableViewCell = cell as? StoryTableViewCell else { return }
+        //tableViewCell.setCollectionViewDataSourceDelegate(dataSourceDelegate: self, forRow: indexPath.row)
+    }
+     
+}
+
+
+

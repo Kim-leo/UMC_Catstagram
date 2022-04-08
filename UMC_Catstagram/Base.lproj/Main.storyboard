@@ -67,7 +67,7 @@
         <!--Item 1-->
         <scene sceneID="Nsf-AF-Pnf">
             <objects>
-                <viewController storyboardIdentifier="HomeViewController" id="0Nh-k4-pvl" customClass="HomeViewController" customModule="UMC_Catstagram" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="0Nh-k4-pvl" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Pyg-D9-HGj">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -97,6 +97,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kdy-sB-vuF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1372" y="839"/>
+        </scene>
+        <!--Home View Controller-->
+        <scene sceneID="zAR-4O-Z3i">
+            <objects>
+                <viewController storyboardIdentifier="HomeViewController" id="uMy-83-Rcs" customClass="HomeViewController" customModule="UMC_Catstagram" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="haZ-IV-XLx">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="Ypt-Co-vAt"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="m2P-FN-RGJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3150" y="825"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="UDA-HQ-DSU">
