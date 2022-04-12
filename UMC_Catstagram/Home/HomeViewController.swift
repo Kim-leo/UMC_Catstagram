@@ -10,11 +10,6 @@ import UIKit
 class HomeViewController: UIViewController {
     
     // MARK: - UIComponents
-    let navigationUIView: UIView = {
-        let view = UIView()
-        return view
-    }()
-    
     let catstagramImage: UIImageView = {
         let catstagramLogo = UIImage(named: "ic_catstagram_logo")
         let imageView: UIImageView = UIImageView()
@@ -55,7 +50,10 @@ class HomeViewController: UIViewController {
         tableView.delegate = self
         tableView.separatorStyle = .none
         
-        tableView.register(FeedTableViewCell.self, forCellReuseIdentifier: FeedTableViewCell.cellIdentifier)
+        let feedNib = UINib(nibName: FeedTableViewCell.cellIdentifier, bundle: nil)
+        tableView.register(feedNib, forCellReuseIdentifier: FeedTableViewCell.cellIdentifier)
+        let storyNib = UINib(nibName: StoryTableViewCell.cellIdentifier, bundle: nil)
+        tableView.register(storyNib, forCellReuseIdentifier: StoryTableViewCell.cellIdentifier)
         
         addComponentsToScreen()
         
@@ -118,6 +116,8 @@ class HomeViewController: UIViewController {
 
 }
 
+    
+
 //MARK: - TableView
 extension HomeViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -126,17 +126,17 @@ extension HomeViewController : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
-            let cell = UITableViewCell()
-            cell.backgroundColor = .blue
+            let cell = tableView.dequeueReusableCell(withIdentifier: StoryTableViewCell.cellIdentifier, for: indexPath)
             cell.selectionStyle = .none
             return cell
         } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: FeedTableViewCell.cellIdentifier, for: indexPath) as! FeedTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: FeedTableViewCell.cellIdentifier, for: indexPath) 
             cell.selectionStyle = .none
             return cell
         }
-
     }
+    
+   
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == 0 {
@@ -150,8 +150,10 @@ extension HomeViewController : UITableViewDelegate, UITableViewDataSource {
         //guard let tableViewCell = cell as? StoryTableViewCell else { return }
         //tableViewCell.setCollectionViewDataSourceDelegate(dataSourceDelegate: self, forRow: indexPath.row)
     }
-     
 }
+
+
+
 
 
 

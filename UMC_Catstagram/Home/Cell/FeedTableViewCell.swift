@@ -11,6 +11,7 @@ class FeedTableViewCell: UITableViewCell {
 
     static let cellIdentifier = "FeedTableViewCell"
     
+    
     // MARK: - UIComponent
     let userProfileImageView: UIImageView = {
         let image = UIImage(systemName: "person.fill")
@@ -40,7 +41,7 @@ class FeedTableViewCell: UITableViewCell {
     let feedImageView: UIImageView = {
         let imageView = UIImageView()
         //nothing yet
-        imageView.backgroundColor = .green
+        imageView.backgroundColor = .lightGray
         return imageView
     }()
     
@@ -105,23 +106,24 @@ class FeedTableViewCell: UITableViewCell {
         return tf
     }()
     
-    
-    
     // MARK: - 동작영역
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
+    override func awakeFromNib() {
+        super.awakeFromNib()
         addComponentsToScreen()
-        likeButton.addTarget(self, action: #selector(likeButtonTap(_:)), for: .touchUpInside)
-        
+        //self.addSubview(likeButton)
+        likeButton.addTarget(self, action: #selector(likeButtonClicked(_:)), for: .touchUpInside)
+        bookMarkButton.addTarget(self, action: #selector(bookMarkButtonClicked(_:)), for: .touchUpInside)
     }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+
+        // Configure the view for the selected state
     }
     
     // MARK: - Button Acntion 함수
-    @objc func likeButtonTap(_ sender: UIButton) {
+    @objc func likeButtonClicked(_ sender: UIButton) {
+        //실행됨
         if likeButton.isSelected {
             likeButton.setImage(UIImage(named: "ic_home_heart"), for: .normal)
             likeButton.isSelected = false
@@ -129,6 +131,18 @@ class FeedTableViewCell: UITableViewCell {
             likeButton.setImage(UIImage(named: "ic_home_heart_full"), for: .normal)
             likeButton.isSelected = true
         }
+        
+    }
+    
+    @objc func bookMarkButtonClicked(_ sender: UIButton) {
+        if bookMarkButton.isSelected {
+            bookMarkButton.setImage(UIImage(named: "ic_bookmark_white"), for: .normal)
+            bookMarkButton.isSelected = false
+        } else {
+            bookMarkButton.setImage(UIImage(named: "ic_bookmark_black"), for: .normal)
+            bookMarkButton.isSelected = true
+        }
+        
     }
     
     

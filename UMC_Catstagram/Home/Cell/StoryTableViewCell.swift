@@ -8,10 +8,15 @@
 import UIKit
 
 class StoryTableViewCell: UITableViewCell {
+    
+    static let cellIdentifier = "StoryTableViewCell"
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        self.backgroundColor = .green
+        
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
